@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +33,11 @@ public Comment addComment(@PathVariable(value="postId") long postid, @Valid @Req
 return commentService.createOneComment(postid, comment);	
 
 }
+@DeleteMapping("/posts/{postId}/comments/{commentId}")
+public ResponseEntity<?> deleteMyComment(@PathVariable(value="postId") long postid,@PathVariable(value="commentId") long commentid)
+{
+	return commentService.deletePost(postid, commentid);
 
+}
 
 }
